@@ -25,7 +25,7 @@ describe 'Books API' do
     end 
   end
 
-  describe 'DELETE /books:id' do
+  context 'DELETE /books:id' do
     let!(:book) { FactoryBot.create(:book, title: 'The Little Tiny Boy', author: 'George Neil') }
       it 'delete a book' do
         expect {  
@@ -34,6 +34,5 @@ describe 'Books API' do
 
       expect(response).to have_http_status(:no_content)
     end 
-      
   end
 end
