@@ -18,10 +18,14 @@ describe 'Books API' do
   context 'POST /books' do
     it 'create a new book' do
       expect {  
-        post '/api/v1/books', params: {book: { title: 'Game of Thrones', author: 'Martin Blue'}}
+        post '/api/v1/books', params: {
+          book: { title: 'Game of Thrones'} ,
+          author: { first_name: 'Martin', last_name: 'Blue'}
+          }
       }.to change { Book.count }.from(0).to(1)
 
        expect(response).to have_http_status(:created)
+       expect(Author.count).to eq(1)
     end 
   end
 
